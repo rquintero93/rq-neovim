@@ -16,7 +16,7 @@ M.base46 = {
 
 M.nvdash = {
 
-load_on_startup = true,
+load_on_startup = false,
   --   header = {
   --     "                            ",
   --     "     ▄▄         ▄ ▄▄▄▄▄▄▄   ",
@@ -41,7 +41,7 @@ load_on_startup = true,
      "   ██║  ██║ ╚██████╔╝  ",
      "   ╚═╝  ╚═╝  ╚══▀▀═╝   ",
      "                       ",
-     "   Powered by Neovim   ",
+     "   Powered by eovim   ",
      "                       ",
   }
 }
