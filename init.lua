@@ -37,3 +37,4 @@ vim.schedule(function()
 end)
 
 vim.env.PATH = vim.env.PATH .. '/usr/local/bin'
+vim.env.PATH = vim.env.PATH ..'~/anaconda3/bin/'

@@ -18,4 +18,8 @@ vim.api.nvim_set_keymap("n", "<Leader>db", ":DBUIToggle<CR>", { noremap = true, 
 
 vim.api.nvim_set_keymap("n", "<Leader>df", ":DBUIFindBuffer<CR>", { noremap = true, silent = true })
 
-
+  -- iron also has a list of commands, see :h iron-commands for all available commands
+vim.keymap.set("n", "<Leader>rs", "<cmd>IronRepl<cr>")
+vim.keymap.set("n", "<Leader>rr", "<cmd>IronRestart<cr>")
+vim.keymap.set("n", "<Leader>rf", "<cmd>IronFocus<cr>")
+vim.keymap.set("n", "<Leader>rh", "<cmd>IronHide<cr>")
