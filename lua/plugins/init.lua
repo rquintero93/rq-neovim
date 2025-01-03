@@ -79,7 +79,7 @@ return {
     -- Your DBUI configuration
     vim.g.db_ui_use_nerd_fonts = 1
     -- vim.g.db_ui_default_query = 'SELECT * FROM "{table}"'
-    vim.g.db_ui_save_location = '~/queries/'
+    vim.g.db_ui_save_location = '~/Documents/Global Alumni/queries/'
   end,
 },
 {
