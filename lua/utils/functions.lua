@@ -2,7 +2,7 @@ local M = {}
 
 function M.open_in_visidata()
   -- Write the current buffer to a temporary file
-  -- vim.cmd("write! /tmp/vd_temp.csv")
+  vim.cmd("write! /tmp/vd_temp.csv")
   -- Open the file in Visidata
 
   -- vim.fn.jobstart({"open","-a","Terminal","/usr/local/bin/visidata", "/tmp/vd_temp.csv"}, {detach = true})
