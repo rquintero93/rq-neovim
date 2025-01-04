@@ -137,7 +137,7 @@ event = "InsertEnter",
       -- You can set them here or manually add keymaps to the functions in iron.core
       keymaps = {
         send_motion = "<space>sc",
-        visual_send = "<space>sc",
+        visual_send = "<space>ss",
         send_file = "<space>sf",
         send_line = "<space>sl",
         send_mark = "<space>sm",
