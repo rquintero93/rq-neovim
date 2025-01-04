@@ -165,7 +165,9 @@ event = "InsertEnter",
     vim.keymap.set("n", "<space>rh", "<cmd>IronHide<cr>")
   end,
 },
-'tpope/vim-fugitive',
+{'tpope/vim-fugitive',
+    event = "VeryLazy",
+  },
 {
   "GCBallesteros/NotebookNavigator.nvim",
   keys = {
