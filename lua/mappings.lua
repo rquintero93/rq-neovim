@@ -23,3 +23,5 @@ vim.keymap.set("n", "<Leader>rs", "<cmd>IronRepl<cr>")
 vim.keymap.set("n", "<Leader>rr", "<cmd>IronRestart<cr>")
 vim.keymap.set("n", "<Leader>rf", "<cmd>IronFocus<cr>")
 vim.keymap.set("n", "<Leader>rh", "<cmd>IronHide<cr>")
+
+vim.keymap.set("n", "<Leader>gg", "<cmd>LazyGit<cr>")
