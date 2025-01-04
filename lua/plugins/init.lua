@@ -37,7 +37,7 @@ return {
   	},
   },
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-  'karb94/neoscroll.nvim',
+  {'karb94/neoscroll.nvim', lazy=false},
 {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
