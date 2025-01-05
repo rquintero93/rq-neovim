@@ -27,7 +27,7 @@ return {
           lsp_format_opt = "fallback"
         end
         return {
-          timeout_ms = 500,
+          timeout_ms = 5000,
           lsp_format = lsp_format_opt,
         }
       end,
@@ -288,6 +288,7 @@ return {
   { "tpope/vim-fugitive", event = "VeryLazy" },
   {
     "GCBallesteros/NotebookNavigator.nvim",
+
     keys = {
       {
         "]h",
@@ -309,7 +310,7 @@ return {
       "hkupty/iron.nvim", -- repl provider
       "anuvyklack/hydra.nvim",
     },
-    event = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       local nn = require "notebook-navigator"
       nn.setup { activate_hydra_keys = "<leader>hy" }
