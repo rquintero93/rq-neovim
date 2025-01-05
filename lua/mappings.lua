@@ -29,3 +29,5 @@ vim.keymap.set("n", "<Leader>rf", "<cmd>IronFocus<cr>")
 vim.keymap.set("n", "<Leader>rh", "<cmd>IronHide<cr>")
 
 vim.keymap.set("n", "<Leader>gg", "<cmd>LazyGit<cr>")
+
+vim.keymap.set("n", "<Leader>cp", "<cmd>CopilotChatToggle<cr>")
