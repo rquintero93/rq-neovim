@@ -206,6 +206,7 @@ return {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "kristijanhusak/vim-dadbod-completion",
+      "ray-x/cmp-sql",
     },
     -- override the options table that is used in the `require("cmp").setup()` call
     opts = function(_, opts)
@@ -219,7 +220,8 @@ return {
         { name = "luasnip", priority = 750 },
         { name = "buffer", priority = 500 },
         { name = "path", priority = 250 },
-        { name = "vim-dadbod-completion", priority = 700 }, -- add new source
+        { name = "vim-dadbod-completion", priority = 700 },
+        { name = "sql", priority = 100 }, -- add new source
       }
       -- return the new table to be used
       return opts
