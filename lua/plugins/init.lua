@@ -190,7 +190,7 @@ return {
   {
     {
       "CopilotC-Nvim/CopilotChat.nvim",
-      event = "VeryLazy",
+      event = { "BufReadPre", "BufNewFile" },
       dependencies = {
         { "zbirenbaum/copilot.lua" },
         { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
@@ -199,6 +199,15 @@ return {
       opts = {
         -- See Configuration section for options
       },
+      -- keys = {
+      --   {
+      --     "<leader>cp",
+      --     function()
+      --       require("copilot_chat").toggle()
+      --     end,
+      --     desc = "Copilot Chat",
+      --   },
+      -- },
       -- See Commands section for default commands if you want to lazy load on them
     },
   },
@@ -318,7 +327,7 @@ return {
   },
   {
     "echasnovski/mini.hipatterns",
-    event = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = { "GCBallesteros/NotebookNavigator.nvim" },
     opts = function()
       local nn = require "notebook-navigator"
@@ -376,7 +385,7 @@ return {
 
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
