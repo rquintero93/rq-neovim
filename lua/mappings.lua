@@ -31,3 +31,5 @@ vim.keymap.set("n", "<Leader>rh", "<cmd>IronHide<cr>")
 vim.keymap.set("n", "<Leader>gg", "<cmd>LazyGit<cr>")
 
 vim.keymap.set("n", "<Leader>cp", "<cmd>CopilotChatToggle<cr>")
+
+vim.keymap.set("n", "<Leader>fs", "<cmd>Telescope symbols<cr>")

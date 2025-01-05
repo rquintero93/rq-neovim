@@ -37,7 +37,6 @@ return {
         python = { "isort", "black" },
         sql = { "sqlfmt" },
         --
-        -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
       },
     },
@@ -393,6 +392,7 @@ return {
     ---@type render.md.UserConfig
     opts = {},
   },
+
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -405,7 +405,7 @@ return {
       -- OPTIONAL:
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
+      -- "rcarriga/nvim-notify",
     },
     config = function()
       require("noice").setup {
@@ -476,4 +476,6 @@ return {
     require("ibl").setup(),
   },
   { "ThePrimeagen/vim-be-good", event = "VeryLazy" },
+  { "HiPhish/rainbow-delimiters.nvim", event = { "BufReadPre", "BufNewFile" } },
+  { "nvim-telescope/telescope-symbols.nvim", event = { "BufReadPre", "BufNewFile" } },
 }

@@ -15,8 +15,6 @@ vim.opt.relativenumber = true
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
 
--- vim.g.db_ui_save_location = '~/queries/'
-
 vim.o.cursorlineopt = "both"
 -- Enable break indent
 vim.opt.breakindent = true
