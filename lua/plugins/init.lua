@@ -518,4 +518,10 @@ return {
       debug = false,
     },
   },
+  {
+    "m4xshen/hardtime.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {},
+  },
 }
