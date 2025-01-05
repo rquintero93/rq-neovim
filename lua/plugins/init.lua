@@ -289,4 +289,9 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = { signs = false },
   },
+  {
+    "tzachar/highlight-undo.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {},
+  },
 }
