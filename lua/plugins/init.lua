@@ -271,17 +271,12 @@ return {
     --     { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
     -- }
   },
+
   {
-    "MeanderingProgrammer/render-markdown.nvim",
-    lazy = false,
-    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-    ---@module 'render-markdown'
-    ---@type render.md.UserConfig
+    "chentoast/marks.nvim",
+    event = "VeryLazy",
     opts = {},
   },
-
   -- Highlight todo, notes, etc in comments
   {
     "folke/todo-comments.nvim",
@@ -292,6 +287,25 @@ return {
   {
     "tzachar/highlight-undo.nvim",
     event = { "BufReadPre", "BufNewFile" },
+    opts = {},
+  },
+  {
+    "jiaoshijie/undotree",
+    dependencies = "nvim-lua/plenary.nvim",
+    config = true,
+    keys = { -- load the plugin only when using it's keybinding:
+      { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
+    },
+  },
+
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    lazy = false,
+    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
     opts = {},
   },
 }
