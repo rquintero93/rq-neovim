@@ -131,16 +131,6 @@ return {
       opts = {
         -- See Configuration section for options
       },
-      -- keys = {
-      --   {
-      --     "<leader>cp",
-      --     function()
-      --       require("copilot_chat").toggle()
-      --     end,
-      --     desc = "Copilot Chat",
-      --   },
-      -- },
-      -- See Commands section for default commands if you want to lazy load on them
     },
   },
   {
