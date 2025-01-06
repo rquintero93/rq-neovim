@@ -13,33 +13,9 @@ return {
         desc = "[F]ormat buffer",
       },
     },
-    opts = {
-      notify_on_error = false,
-      format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
-        local lsp_format_opt
-        if disable_filetypes[vim.bo[bufnr].filetype] then
-          lsp_format_opt = "never"
-        else
-          lsp_format_opt = "fallback"
-        end
-        return {
-          timeout_ms = 5000,
-          lsp_format = lsp_format_opt,
-        }
-      end,
-      formatters_by_ft = {
-        lua = { "stylua" },
-        -- Conform can also run multiple formatters sequentially
-        python = { "isort", "black" },
-        sql = { "sqlfmt" },
-        --
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
-      },
-    },
+    config = function()
+      require "configs.conform"
+    end
   },
 
   {
@@ -111,7 +87,7 @@ return {
   {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
-      { "tpope/vim-dadbod", lazy = true },
+      { "tpope/vim-dadbod",                     lazy = true },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql", "bqsql" }, lazy = true }, -- Optional
     },
     cmd = {
@@ -132,50 +108,7 @@ return {
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
-      require("copilot").setup {
-        panel = {
-          enabled = false,
-          auto_refresh = false,
-          keymap = {
-            jump_prev = "[[",
-            jump_next = "]]",
-            accept = "<CR>",
-            refresh = "gr",
-            open = "<M-CR>",
-          },
-          layout = {
-            position = "bottom", -- | top | left | right | horizontal | vertical
-            ratio = 0.4,
-          },
-        },
-        suggestion = {
-          enabled = false,
-          auto_trigger = false,
-          hide_during_completion = true,
-          debounce = 75,
-          keymap = {
-            accept = "<M-l>",
-            accept_word = false,
-            accept_line = false,
-            next = "<M-]>",
-            prev = "<M-[>",
-            dismiss = "<C-]>",
-          },
-        },
-        filetypes = {
-          yaml = false,
-          markdown = false,
-          help = false,
-          gitcommit = false,
-          gitrebase = false,
-          hgcommit = false,
-          svn = false,
-          cvs = false,
-          ["."] = false,
-        },
-        copilot_node_command = "node", -- Node.js version must be > 18.x
-        server_opts_overrides = {},
-      }
+      require "configs.copilot"
     end,
   },
   {
@@ -194,7 +127,7 @@ return {
         { "zbirenbaum/copilot.lua" },
         { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
       },
-      build = "make tiktoken", -- Only on MacOS or Linux
+      build = "make tiktoken",                          -- Only on MacOS or Linux
       opts = {
         -- See Configuration section for options
       },
@@ -223,13 +156,13 @@ return {
       local cmp = require "cmp"
       -- modify the sources part of the options table
       opts.sources = cmp.config.sources {
-        { name = "copilot", priority = 1500 },
-        { name = "nvim_lsp", priority = 1000 },
-        { name = "luasnip", priority = 750 },
-        { name = "buffer", priority = 500 },
-        { name = "path", priority = 250 },
+        { name = "copilot",               priority = 1500 },
+        { name = "nvim_lsp",              priority = 1000 },
+        { name = "luasnip",               priority = 750 },
+        { name = "buffer",                priority = 500 },
+        { name = "path",                  priority = 250 },
         { name = "vim-dadbod-completion", priority = 700 },
-        { name = "sql", priority = 100 }, -- add new source
+        { name = "sql",                   priority = 100 }, -- add new source
       }
       -- return the new table to be used
       return opts
@@ -293,7 +226,7 @@ return {
       vim.keymap.set("n", "<space>rh", "<cmd>IronHide<cr>")
     end,
   },
-  { "tpope/vim-fugitive", event = "VeryLazy" },
+  { "tpope/vim-fugitive",    event = "VeryLazy" },
   {
     "GCBallesteros/NotebookNavigator.nvim",
 
@@ -420,11 +353,11 @@ return {
         },
         -- you can enable a preset for easier configuration
         presets = {
-          bottom_search = true, -- use a classic bottom cmdline for search
-          command_palette = true, -- position the cmdline and popupmenu together
+          bottom_search = true,         -- use a classic bottom cmdline for search
+          command_palette = true,       -- position the cmdline and popupmenu together
           long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false, -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = false, -- add a border to hover docs and signature help
+          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = false,       -- add a border to hover docs and signature help
         },
       }
     end,
@@ -475,8 +408,8 @@ return {
     opts = {},
     require("ibl").setup(),
   },
-  { "ThePrimeagen/vim-be-good", event = "VeryLazy" },
-  { "HiPhish/rainbow-delimiters.nvim", event = { "BufReadPre", "BufNewFile" } },
+  { "ThePrimeagen/vim-be-good",              event = "VeryLazy" },
+  { "HiPhish/rainbow-delimiters.nvim",       event = { "BufReadPre", "BufNewFile" } },
   { "nvim-telescope/telescope-symbols.nvim", event = { "BufReadPre", "BufNewFile" } },
   {
     "AckslD/nvim-neoclip.lua",
@@ -493,17 +426,17 @@ return {
   { "airblade/vim-rooter", lazy = false },
   {
     "okuuva/auto-save.nvim",
-    version = "^1.0.0", -- see https://devhints.io/semver, alternatively use '*' to use the latest tagged release
-    cmd = "ASToggle", -- optional for lazy loading on command
+    version = "^1.0.0",                       -- see https://devhints.io/semver, alternatively use '*' to use the latest tagged release
+    cmd = "ASToggle",                         -- optional for lazy loading on command
     event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
     opts = {
       -- your config goes here
       -- or just leave it empty :)
-      enabled = true, -- start auto-save when the plugin is loaded (i.e. when your package manager loads it)
-      trigger_events = { -- See :h events
-        immediate_save = { "BufLeave", "FocusLost" }, -- vim events that trigger an immediate save
+      enabled = true,                                  -- start auto-save when the plugin is loaded (i.e. when your package manager loads it)
+      trigger_events = {                               -- See :h events
+        immediate_save = { "BufLeave", "FocusLost" },  -- vim events that trigger an immediate save
         defer_save = { "InsertLeave", "TextChanged" }, -- vim events that trigger a deferred save (saves after `debounce_delay`)
-        cancel_deferred_save = { "InsertEnter" }, -- vim events that cancel a pending deferred save
+        cancel_deferred_save = { "InsertEnter" },      -- vim events that cancel a pending deferred save
       },
       -- function that takes the buffer handle and determines whether to save the current buffer or not
       -- return true: if buffer is ok to be saved
@@ -511,9 +444,9 @@ return {
       -- if set to `nil` then no specific condition is applied
       condition = nil,
       write_all_buffers = false, -- write all buffers when the current one meets `condition`
-      noautocmd = false, -- do not execute autocmds when saving
-      lockmarks = false, -- lock marks when saving, see `:h lockmarks` for more details
-      debounce_delay = 1000, -- delay after which a pending save is executed
+      noautocmd = false,         -- do not execute autocmds when saving
+      lockmarks = false,         -- lock marks when saving, see `:h lockmarks` for more details
+      debounce_delay = 1000,     -- delay after which a pending save is executed
       -- log debug messages to 'auto-save.log' file in neovim cache directory, set to `true` to enable
       debug = false,
     },
